@@ -1,6 +1,6 @@
 %define tarname Sphinx
 %define name python-sphinx
-%define version 0.4.1
+%define version 0.4.2
 %define release %mkrel 1
 
 Summary: Python documentation generator
