@@ -1,7 +1,7 @@
 %define tarname Sphinx
 %define name python-sphinx
 %define version 0.4.2
-%define release %mkrel 1
+%define release %mkrel 2
 
 Summary: Python documentation generator
 Name:	 %{name}
@@ -13,6 +13,7 @@ Group: Development/Python
 Url: http://sphinx.pocoo.org/
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires: python-pygments >= 0.8, python-jinja > 1.1, python-docutils >= 0.4
+Requires: python-setuptools
 BuildRequires: python-devel, python-setuptools
 BuildRequires: tetex-latex, python-docutils >= 0.4
 BuildArch: noarch
@@ -42,4 +43,3 @@ make -C doc/_build/latex all-pdf
 %files -f FILELIST
 %defattr(-,root,root)
 %doc AUTHORS CHANGES LICENSE TODO doc/_build/latex/sphinx.pdf
-
