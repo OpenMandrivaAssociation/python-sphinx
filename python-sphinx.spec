@@ -1,22 +1,24 @@
-%define tarname Sphinx
-%define name python-sphinx
-%define version 0.4.3
-%define release %mkrel 1
+%define tarname	Sphinx
+%define name	python-sphinx
+%define version	0.5
+%define release	%mkrel 1
 
-Summary: Python documentation generator
-Name:	 %{name}
-Version: %{version}
-Release: %{release}
-Source0: %{tarname}-%{version}.tar.lzma
-License: BSD
-Group: Development/Python
-Url: http://sphinx.pocoo.org/
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-Requires: python-pygments >= 0.8, python-jinja > 1.1, python-docutils >= 0.4
-Requires: python-setuptools
-BuildRequires: python-devel, python-setuptools
-BuildRequires: tetex-latex, python-docutils >= 0.4
-BuildArch: noarch
+Summary:	Python documentation generator
+Name:		%{name}
+Version:	%{version}
+Release:	%{release}
+Source0:	%{tarname}-%{version}.tar.lzma
+License:	BSD
+Group:		Development/Python
+Url:		http://sphinx.pocoo.org/
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildArch:	noarch
+Requires:	python-pygments >= 0.8, python-jinja > 1.1
+Requires:	python-docutils >= 0.4
+Requires:	python-setuptools
+BuildRequires:	python-setuptools
+BuildRequires:	tetex-latex, python-docutils >= 0.4
+%py_requires -d
 
 %description
 Sphinx is a tool that facilitates the creation of beautiful
@@ -27,8 +29,6 @@ other projects.
 
 %prep
 %setup -q -n %{tarname}-%{version}
-
-%build
 
 %install
 %__rm -rf %{buildroot}
