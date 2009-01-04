@@ -1,13 +1,13 @@
 %define tarname	Sphinx
 %define name	python-sphinx
-%define version	0.5
-%define release	%mkrel 2
+%define version	0.5.1
+%define release	%mkrel 1
 
 Summary:	Python documentation generator
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
-Source0:	%{tarname}-%{version}.tar.lzma
+Source0:	%{tarname}-%{version}.tar.bz2
 License:	BSD
 Group:		Development/Python
 Url:		http://sphinx.pocoo.org/
@@ -34,7 +34,7 @@ other projects.
 %__rm -rf %{buildroot}
 %__python setup.py install --root=%{buildroot} --record=FILELIST
 
-make -C doc latex 
+make -C doc latex
 make -C doc/_build/latex all-pdf
 
 %clean
