@@ -1,21 +1,21 @@
 %define tarname	Sphinx
 %define name	python-sphinx
-%define version	0.5.1
+%define version	0.5.2
 %define release	%mkrel 1
 
 Summary:	Python documentation generator
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
-Source0:	%{tarname}-%{version}.tar.bz2
+Source0:	%{tarname}-%{version}.tar.gz
 License:	BSD
 Group:		Development/Python
 Url:		http://sphinx.pocoo.org/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildArch:	noarch
-Requires:	python-pygments >= 0.8, python-jinja > 1.1
+Requires:	python-pygments >= 0.8, python-jinja > 1.2
 Requires:	python-docutils >= 0.4
-Requires:	python-setuptools
+Requires:	python-pkg-resources
 BuildRequires:	python-setuptools
 BuildRequires:	tetex-latex, python-docutils >= 0.4
 %py_requires -d
