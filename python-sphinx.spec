@@ -1,7 +1,7 @@
 %define tarname	Sphinx
 %define name	python-sphinx
 %define version	0.5.2
-%define release	%mkrel 1
+%define release	%mkrel 2
 
 Summary:	Python documentation generator
 Name:		%{name}
@@ -13,7 +13,7 @@ Group:		Development/Python
 Url:		http://sphinx.pocoo.org/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildArch:	noarch
-Requires:	python-pygments >= 0.8, python-jinja > 1.2
+Requires:	python-pygments >= 0.8, python-jinja >= 1.2
 Requires:	python-docutils >= 0.4
 Requires:	python-pkg-resources
 BuildRequires:	python-setuptools
