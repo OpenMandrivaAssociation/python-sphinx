@@ -18,6 +18,7 @@ Requires:	python-docutils >= 0.4
 Requires:	python-pkg-resources
 BuildRequires:	python-setuptools
 BuildRequires:	tetex-latex, python-docutils >= 0.4
+BuildRequires:	python-jinja2 >= 2.1
 %py_requires -d
 
 %description
