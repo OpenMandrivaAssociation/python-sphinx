@@ -1,7 +1,7 @@
 %define tarname	Sphinx
 %define name	python-sphinx
 %define version	0.6.2
-%define release	%mkrel 1
+%define release	%mkrel 2
 
 Summary:	Python documentation generator
 Name:		%{name}
@@ -21,6 +21,8 @@ BuildRequires:	tetex-latex, python-docutils >= 0.4
 BuildRequires:	python-jinja2 >= 2.1
 %py_requires -d
 
+Patch0:		Sphinx-0.6.2-sagemath.patch
+
 %description
 Sphinx is a tool that facilitates the creation of beautiful
 documentation for Python projects from reStructuredText sources. It
@@ -30,6 +32,7 @@ other projects.
 
 %prep
 %setup -q -n %{tarname}-%{version}
+%patch0 -p1
 
 %install
 %__rm -rf %{buildroot}
