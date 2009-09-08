@@ -1,7 +1,7 @@
 %define tarname	Sphinx
 %define name	python-sphinx
-%define version	0.6.2
-%define release	%mkrel 2
+%define version	0.6.3
+%define release	%mkrel 1
 
 Summary:	Python documentation generator
 Name:		%{name}
@@ -17,7 +17,7 @@ Requires:	python-pygments >= 0.8, python-jinja2 >= 2.1
 Requires:	python-docutils >= 0.4
 Requires:	python-pkg-resources
 BuildRequires:	python-setuptools
-BuildRequires:	tetex-latex, python-docutils >= 0.4
+BuildRequires:	python-docutils >= 0.4
 BuildRequires:	python-jinja2 >= 2.1
 %py_requires -d
 
@@ -38,12 +38,11 @@ other projects.
 %__rm -rf %{buildroot}
 %__python setup.py install --root=%{buildroot} --record=FILELIST
 
-make -C doc latex
-make -C doc/_build/latex all-pdf
+make -C doc html
 
 %clean
 %__rm -rf %{buildroot}
 
 %files -f FILELIST
 %defattr(-,root,root)
-%doc AUTHORS CHANGES LICENSE TODO doc/_build/latex/sphinx.pdf
+%doc AUTHORS CHANGES LICENSE TODO doc/_build/html/
