@@ -1,14 +1,14 @@
 %define tarname	Sphinx
 %define name	python-sphinx
-%define version	0.6.5
+%define version	0.6.6
 %define release	%mkrel 1
 
 Summary:	Python documentation generator
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
-Source0:	%{tarname}-%{version}.tar.gz
-Patch0:         Sphinx-0.6.4-sagemath.patch
+Source0:	http://pypi.python.org/packages/source/S/%{tarname}/%{tarname}-%{version}.tar.gz
+Patch0:         Sphinx-0.6.6-sagemath.patch
 License:	BSD
 Group:		Development/Python
 Url:		http://sphinx.pocoo.org/
