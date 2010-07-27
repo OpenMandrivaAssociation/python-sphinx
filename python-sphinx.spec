@@ -36,9 +36,9 @@ other projects.
 
 %install
 %__rm -rf %{buildroot}
-%__python setup.py install --root=%{buildroot} --record=FILELIST
+PYTHONDONTWRITEBYTECODE= %__python setup.py install --root=%{buildroot} --record=FILE_LIST
 
-make -C doc html
+%__make -C doc html
 
 %clean
 %__rm -rf %{buildroot}
@@ -48,6 +48,6 @@ pushd tests
 %__python run.py
 popd
 
-%files -f FILELIST
+%files -f FILE_LIST
 %defattr(-,root,root)
 %doc AUTHORS CHANGES LICENSE TODO doc/_build/html/
