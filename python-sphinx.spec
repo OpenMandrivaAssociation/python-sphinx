@@ -1,6 +1,6 @@
 %define tarname	Sphinx
 %define name	python-sphinx
-%define version	0.6.7
+%define version	1.0.3
 %define release	%mkrel 1
 
 Summary:	Python documentation generator
@@ -8,18 +8,20 @@ Name:		%{name}
 Version:	%{version}
 Release:	%{release}
 Source0:	http://pypi.python.org/packages/source/S/%{tarname}/%{tarname}-%{version}.tar.gz
-Patch0:         Sphinx-0.6.6-sagemath.patch
+Patch0:         Sphinx-1.0b1-sagemath.patch
 License:	BSD
 Group:		Development/Python
 Url:		http://sphinx.pocoo.org/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildArch:	noarch
-Requires:	python-pygments >= 0.8, python-jinja2 >= 2.1
-Requires:	python-docutils >= 0.4
 Requires:	python-pkg-resources
+Requires:	python-docutils >= 0.5
+Requires:	python-pygments >= 0.8
+Requires:	python-jinja2 >= 2.2
 BuildRequires:	python-setuptools
-BuildRequires:	python-docutils >= 0.4
-BuildRequires:	python-jinja2 >= 2.1
+BuildRequires:	python-docutils >= 0.5
+Requires:	python-pygments >= 0.8
+BuildRequires:	python-jinja2 >= 2.2
 BuildRequires:	python-nose
 %py_requires -d
 
