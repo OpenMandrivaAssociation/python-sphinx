@@ -2,6 +2,8 @@
 %define name	python-sphinx
 %define version	1.0.4
 %define release	%mkrel 2
+# disable this for bootstrapping nose and sphinx
+%define enable_tests 0
 
 Summary:	Python documentation generator
 Name:		%{name}
@@ -22,7 +24,9 @@ BuildRequires:	python-setuptools
 BuildRequires:	python-docutils >= 0.5
 Requires:	python-pygments >= 0.8
 BuildRequires:	python-jinja2 >= 2.2
+%if enable_tests
 BuildRequires:	python-nose
+%endif
 %py_requires -d
 
 %description
@@ -46,9 +50,11 @@ PYTHONDONTWRITEBYTECODE= %__python setup.py install --root=%{buildroot} --record
 %__rm -rf %{buildroot}
 
 %check
+%if %enable_tests
 pushd tests
 %__python run.py
 popd
+%endif
 
 %files -f FILE_LIST
 %defattr(-,root,root)
