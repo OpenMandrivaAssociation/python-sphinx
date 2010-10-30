@@ -4,6 +4,7 @@
 %define release	%mkrel 2
 # disable this for bootstrapping nose and sphinx
 %define enable_tests 0
+%define enable_doc 0
 
 Summary:	Python documentation generator
 Name:		%{name}
@@ -21,9 +22,11 @@ Requires:	python-docutils >= 0.5
 Requires:	python-pygments >= 0.8
 Requires:	python-jinja2 >= 2.2
 BuildRequires:	python-setuptools
-BuildRequires:	python-docutils >= 0.5
 Requires:	python-pygments >= 0.8
+%if %enable_doc
+BuildRequires:	python-docutils >= 0.5
 BuildRequires:	python-jinja2 >= 2.2
+%endif
 %if %enable_tests
 BuildRequires:	python-nose
 %endif
@@ -43,9 +46,9 @@ other projects.
 %install
 %__rm -rf %{buildroot}
 PYTHONDONTWRITEBYTECODE= %__python setup.py install --root=%{buildroot} --record=FILE_LIST
-
+%if %enable_doc
 %__make -C doc html
-
+%endif
 %clean
 %__rm -rf %{buildroot}
 
@@ -58,4 +61,7 @@ popd
 
 %files -f FILE_LIST
 %defattr(-,root,root)
-%doc AUTHORS CHANGES LICENSE TODO doc/_build/html/
+%doc AUTHORS CHANGES LICENSE TODO 
+%if %enable_doc
+%doc doc/_build/html/
+%endif
