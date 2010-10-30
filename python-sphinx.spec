@@ -1,10 +1,10 @@
 %define tarname	Sphinx
 %define name	python-sphinx
 %define version	1.0.4
-%define release	%mkrel 2
+%define release	%mkrel 3
 # disable this for bootstrapping nose and sphinx
-%define enable_tests 0
-%define enable_doc 0
+%define enable_tests 1
+%define enable_doc 1
 
 Summary:	Python documentation generator
 Name:		%{name}
