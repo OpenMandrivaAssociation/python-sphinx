@@ -24,7 +24,7 @@ BuildRequires:	python-setuptools
 BuildRequires:	python-docutils >= 0.5
 Requires:	python-pygments >= 0.8
 BuildRequires:	python-jinja2 >= 2.2
-%if enable_tests
+%if %enable_tests
 BuildRequires:	python-nose
 %endif
 %py_requires -d
