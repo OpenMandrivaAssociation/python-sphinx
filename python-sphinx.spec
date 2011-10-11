@@ -1,7 +1,7 @@
 %define tarname	Sphinx
 %define name	python-sphinx
-%define version	1.0.7
-%define release	%mkrel 3
+%define version	1.1
+%define release	%mkrel 1
 
 # disable these for bootstrapping nose and sphinx
 %define enable_tests 1
@@ -12,21 +12,21 @@ Name:		%{name}
 Version:	%{version}
 Release:	%{release}
 Source0:	http://pypi.python.org/packages/source/S/%{tarname}/%{tarname}-%{version}.tar.gz
-Patch0:         Sphinx-1.0b1-sagemath.patch
+Patch0:         Sphinx-1.1-sagemath.patch
 License:	BSD
 Group:		Development/Python
 Url:		http://sphinx.pocoo.org/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildArch:	noarch
 Requires:	python-pkg-resources
-Requires:	python-docutils >= 0.5
-Requires:	python-pygments >= 0.8
-Requires:	python-jinja2 >= 2.2
+Requires:	python-docutils >= 0.7
+Requires:	python-pygments >= 1.2
+Requires:	python-jinja2 >= 2.3
 BuildRequires:	python-setuptools
-Requires:	python-pygments >= 0.8
+Requires:	python-pygments >= 1.2
 %if %enable_doc
-BuildRequires:	python-docutils >= 0.5
-BuildRequires:	python-jinja2 >= 2.2
+BuildRequires:	python-docutils >= 0.7
+BuildRequires:	python-jinja2 >= 2.3
 %endif
 %if %enable_tests
 BuildRequires:	python-nose
