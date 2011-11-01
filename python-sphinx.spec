@@ -1,6 +1,6 @@
 %define tarname	Sphinx
 %define name	python-sphinx
-%define version	1.1
+%define version	1.1.1
 %define release	%mkrel 1
 
 # disable these for bootstrapping nose and sphinx
