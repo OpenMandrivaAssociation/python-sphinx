@@ -46,7 +46,7 @@ other projects.
 
 %install
 %__rm -rf %{buildroot}
-PYTHONDONTWRITEBYTECODE= %__python setup.py install --root=%{buildroot} --record=FILE_LIST
+PYTHONDONTWRITEBYTECODE= %__python setup.py install --root=%{buildroot}
 %if %enable_doc
 %__make -C doc html
 %endif
@@ -60,9 +60,12 @@ pushd tests
 popd
 %endif
 
-%files -f FILE_LIST
+%files
 %defattr(-,root,root)
 %doc AUTHORS CHANGES LICENSE TODO 
 %if %enable_doc
 %doc doc/_build/html/
 %endif
+%_bindir/sphinx*
+%py_sitedir/sphinx/
+%py_sitedir/Sphinx-*egg-info/
