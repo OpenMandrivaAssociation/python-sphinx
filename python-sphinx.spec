@@ -1,7 +1,7 @@
 %define tarname	Sphinx
 %define name	python-sphinx
-%define version	1.1.2
-%define release	%mkrel 2
+%define version	1.1.3
+%define release	1
 
 # disable these for bootstrapping nose and sphinx
 %define enable_tests 1
@@ -12,7 +12,7 @@ Name:		%{name}
 Version:	%{version}
 Release:	%{release}
 Source0:	http://pypi.python.org/packages/source/S/%{tarname}/%{tarname}-%{version}.tar.gz
-Patch0:         Sphinx-1.1-sagemath.patch
+Patch0:         Sphinx-1.1.3-sagemath.patch
 License:	BSD
 Group:		Development/Python
 Url:		http://sphinx.pocoo.org/
