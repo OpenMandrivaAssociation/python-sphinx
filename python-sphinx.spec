@@ -1,16 +1,13 @@
 %define tarname	Sphinx
-%define name	python-sphinx
-%define version	1.1.3
-%define release	2
 
 # disable these for bootstrapping nose and sphinx
-%define enable_tests 0
-%define enable_doc 0
+%define enable_tests 1
+%define enable_doc 1
 
 Summary:	Python documentation generator
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Name:		python-sphinx
+Version:	1.1.3
+Release:	3
 Source0:	http://pypi.python.org/packages/source/S/%{tarname}/%{tarname}-%{version}.tar.gz
 Patch0:         Sphinx-1.1.3-sagemath.patch
 License:	BSD
@@ -72,6 +69,9 @@ popd
 
 
 %changelog
+* Fri Feb  8 2013 pcpa <paulo.cesar.pereira.de.andrade@gmail.com> - 1.1.3-3
+- Rebuild after bootstrap.
+
 * Wed Apr 18 2012 Lev Givon <lev@mandriva.org> 1.1.3-1
 + Revision: 791777
 - Update to 1.1.3.
