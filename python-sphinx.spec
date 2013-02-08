@@ -4,8 +4,8 @@
 %define release	2
 
 # disable these for bootstrapping nose and sphinx
-%define enable_tests 1
-%define enable_doc 1
+%define enable_tests 0
+%define enable_doc 0
 
 Summary:	Python documentation generator
 Name:		%{name}
