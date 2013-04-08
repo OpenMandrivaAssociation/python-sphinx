@@ -7,9 +7,10 @@
 Summary:	Python documentation generator
 Name:		python-sphinx
 Version:	1.1.3
-Release:	3
+Release:	4
 Source0:	http://pypi.python.org/packages/source/S/%{tarname}/%{tarname}-%{version}.tar.gz
 Patch0:         Sphinx-1.1.3-sagemath.patch
+Patch1:		Sphinx-1.1.3-fix_quoting_in_inheritance.patch
 License:	BSD
 Group:		Development/Python
 Url:		http://sphinx.pocoo.org/
@@ -40,6 +41,7 @@ other projects.
 %prep
 %setup -q -n %{tarname}-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %install
 %__rm -rf %{buildroot}
