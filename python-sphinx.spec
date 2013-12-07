@@ -17,6 +17,7 @@ Patch1:	Sphinx-1.1.3-fix_quoting_in_inheritance.patch
 Patch2:	Sphinx-1.1.3-manpage-writer.patch
 BuildArch:	noarch
 BuildRequires:	python-setuptools
+BuildRequires:	python-devel
 %if %enable_doc
 BuildRequires:	python-docutils >= 0.7
 BuildRequires:	python-jinja2 >= 2.3
@@ -28,7 +29,6 @@ Requires:	python-docutils >= 0.7
 Requires:	python-jinja2 >= 2.3
 Requires:	python-pkg-resources
 Requires:	python-pygments >= 1.2
-%py_requires -d
 
 %description
 Sphinx is a tool that facilitates the creation of beautiful
