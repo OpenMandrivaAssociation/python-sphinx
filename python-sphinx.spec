@@ -7,13 +7,14 @@
 Summary:	Python documentation generator
 Name:		python-sphinx
 Version:	1.1.3
-Release:	8
+Release:	9
 License:	BSD
 Group:		Development/Python
 Url:	http://sphinx.pocoo.org/
 Source0:	http://pypi.python.org/packages/source/S/%{tarname}/%{tarname}-%{version}.tar.gz
 Patch0:	Sphinx-1.1.3-sagemath.patch
 Patch1:	Sphinx-1.1.3-fix_quoting_in_inheritance.patch
+Patch2:	Sphinx-1.1.3-manpage-writer.patch
 BuildArch:	noarch
 BuildRequires:	python-setuptools
 %if %enable_doc
