@@ -7,7 +7,7 @@
 Summary:	Python documentation generator
 Name:		python-sphinx
 Version:	1.1.3
-Release:	7
+Release:	8
 License:	BSD
 Group:		Development/Python
 Url:	http://sphinx.pocoo.org/
