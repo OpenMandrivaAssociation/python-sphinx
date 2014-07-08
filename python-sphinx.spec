@@ -19,9 +19,9 @@ Group:		Development/Python
 Url:		http://sphinx.pocoo.org/
 BuildArch:	noarch
 Requires:	python-pkg-resources
-Requires:	python3-docutils
-Requires:	python3-jinja2
-Requires:	python3-pygments
+Requires:	python-docutils
+Requires:	python-jinja2
+Requires:	python-pygments
 BuildRequires:	python-setuptools
 %if %{with doc}
 BuildRequires:	python-docutils >= 0.7
@@ -29,13 +29,9 @@ BuildRequires:	python-jinja2 >= 2.3
 %endif
 %if %{with tests}
 BuildRequires:	python-nose
-BuildRequires:	python3-nose
 BuildRequires:	python-pygments
-BuildRequires:	python3-pygments
 BuildRequires:  python-jinja2
-BuildRequires:  python3-jinja2
 %endif
-BuildRequires:	pkgconfig(python)
 BuildRequires:	pkgconfig(python3)
 BuildRequires:	python3-distribute
 %rename python3-sphinx
@@ -52,8 +48,12 @@ other projects.
 Summary:	Python documentation generator for Python 2.x
 Group:		Development/Python
 Requires:	python2-docutils >= 0.7
-Requires:	python-pygments >= 1.2
+Requires:	python2-pygments >= 1.2
 Requires:	python2-jinja2 >= 2.3
+BuildRequires:	pkgconfig(python)
+BuildRequires:	python2-nose
+BuildRequires:	python2-pygments
+BuildRequires:  python2-jinja2
 
 %description -n python2-sphinx
 Sphinx is a tool that makes it easy to create intelligent and
