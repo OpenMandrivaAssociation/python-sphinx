@@ -9,7 +9,7 @@ Summary:	Python documentation generator
 
 Name:		python-sphinx
 Version:	1.2.2 
-Release:	5
+Release:	6
 Source0:	http://pypi.python.org/packages/source/S/%{tarname}/%{tarname}-%{version}.tar.gz
 Patch0:	        Sphinx-1.2.2-mantarget.patch
 Patch1:         Sphinx-1.2.2-babel-option.patch
