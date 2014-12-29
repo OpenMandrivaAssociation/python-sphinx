@@ -199,6 +199,7 @@ cd ..
 %{_mandir}/man1/*
 %if %{with python2}
 %exclude %{_bindir}/sphinx-*-%{python2_version}
+%exclude %{_bindir}/sphinx-build2
 %exclude %{py2_puresitedir}/*
 %endif
 
