@@ -132,6 +132,7 @@ for f in %{buildroot}%{_bindir}/sphinx-*;
 do
  mv $f $f-%{python2_version}
 done
+ln -s %{_bindir}/sphinx-build-%{python2_version} %{buildroot}%{_bindir}/sphinx-build2
 cd ..
 %endif
 
@@ -205,6 +206,7 @@ cd ..
 %files -n python2-sphinx
 %doc python2/AUTHORS python2/CHANGES python2/EXAMPLES python2/LICENSE
 %{_bindir}/sphinx-*-%{python2_version}
+%{_bindir}/sphinx-build2
 %{py2_puresitedir}/*
 %dir %{_datadir}/sphinx/
 %dir %{_datadir}/sphinx/locale
