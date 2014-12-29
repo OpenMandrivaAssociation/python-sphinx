@@ -50,10 +50,11 @@ Group:		Development/Python
 Requires:	python2-docutils >= 0.7
 Requires:	python2-pygments >= 1.2
 Requires:	python2-jinja2 >= 2.3
-BuildRequires:	pkgconfig(python)
+BuildRequires:	pkgconfig(python2)
 BuildRequires:	python2-nose
 BuildRequires:	python2-pygments
 BuildRequires:  python2-jinja2
+BuildRequires:	python2-setuptools
 
 %description -n python2-sphinx
 Sphinx is a tool that makes it easy to create intelligent and
