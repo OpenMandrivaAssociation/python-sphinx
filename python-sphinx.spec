@@ -9,7 +9,7 @@ Summary:	Python documentation generator
 
 Name:		python-sphinx
 Version:	1.2.3
-Release:	4
+Release:	5
 Source0:	http://pypi.python.org/packages/source/S/Sphinx/Sphinx-%{version}.tar.gz
 Patch0:	        Sphinx-1.2.2-mantarget.patch
 Patch1:         Sphinx-1.2.2-babel-option.patch
@@ -133,11 +133,13 @@ do
  mv $f $f-%{python2_version}
 done
 ln -s %{_bindir}/sphinx-build-%{python2_version} %{buildroot}%{_bindir}/sphinx-build2
+ln -s %{_bindir}/sphinx-build-%{python2_version} %{buildroot}%{_bindir}/sphinx-build-2
 cd ..
 %endif
 
 cd python3
 python setup.py install --skip-build --root=%{buildroot} 
+ln -s %{_bindir}/sphinx-build %{buildroot}%{_bindir}/sphinx-build-3
 
 %if %{with doc}
 cd doc
@@ -157,7 +159,7 @@ cd ..
 # patch to support this incorporated in 0.6.6
 pushd %{buildroot}%{py_puresitedir}
 
-for lang in `find sphinx/locale -maxdepth 1 -mindepth 1 -type d -not -path '*/\.*' -printf "%f "`;
+for lang in `find sphinx/locale -maxdepth 1 -mindepth 1 -type d -not -path '*/__pycache__' -not -path '*/\.*' -printf "%f "`;
 do
   install -d %{buildroot}%{_datadir}/sphinx/locale/$lang
   install -d %{buildroot}%{_datadir}/locale/$lang/LC_MESSAGES
@@ -200,6 +202,7 @@ cd ..
 %if %{with python2}
 %exclude %{_bindir}/sphinx-*-%{python2_version}
 %exclude %{_bindir}/sphinx-build2
+%exclude %{_bindir}/sphinx-build-2
 %exclude %{py2_puresitedir}/*
 %endif
 
@@ -208,6 +211,7 @@ cd ..
 %doc python2/AUTHORS python2/CHANGES python2/EXAMPLES python2/LICENSE
 %{_bindir}/sphinx-*-%{python2_version}
 %{_bindir}/sphinx-build2
+%{_bindir}/sphinx-build-2
 %{py2_puresitedir}/*
 %dir %{_datadir}/sphinx/
 %dir %{_datadir}/sphinx/locale
