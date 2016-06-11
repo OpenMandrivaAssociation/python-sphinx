@@ -2,15 +2,15 @@
 
 # disable these for bootstrapping nose and sphinx
 %bcond_with tests
-%bcond_without doc
+%bcond_with doc
 %bcond_without python2
 
 Summary:	Python documentation generator
 
 Name:		python-sphinx
-Version:	1.2.3
-Release:	5
-Source0:	http://pypi.python.org/packages/source/S/Sphinx/Sphinx-%{version}.tar.gz
+Version:	1.4.3
+Release:	0.1
+Source0:	https://pypi.python.org/packages/f3/79/c0da1a0a8d4752b937afba5d8788ef684544a8a72ee2a8d47541a6cf7b65/Sphinx-%{version}.tar.gz
 Patch0:	        Sphinx-1.2.2-mantarget.patch
 Patch1:         Sphinx-1.2.2-babel-option.patch
 Patch2:		Sphinx-1.2.2-python3.patch
@@ -101,8 +101,8 @@ cp -r python3 python2
 
 cd python3
 # Modifications needed only for python 3.x build
-find . -name "*.py" |xargs 2to3 -w
-%patch2 -p1 -b .py3~
+#find . -name "*.py" |xargs 2to3 -w
+#patch2 -p1 -b .py3~
 
 %build
 %if %{with python2}
@@ -198,7 +198,9 @@ cd ..
 %dir %{_datadir}/sphinx/
 %dir %{_datadir}/sphinx/locale
 %dir %{_datadir}/sphinx/locale/*
+%if %{with doc}
 %{_mandir}/man1/*
+%endif
 %if %{with python2}
 %exclude %{_bindir}/sphinx-*-%{python2_version}
 %exclude %{_bindir}/sphinx-build2

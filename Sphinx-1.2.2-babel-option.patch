@@ -1,10 +1,9 @@
-diff -Naur Sphinx-1.2.2.orig/sphinx/writers/latex.py Sphinx-1.2.2/sphinx/writers/latex.py
---- Sphinx-1.2.2.orig/sphinx/writers/latex.py	2014-04-16 18:28:15.468189400 +0400
-+++ Sphinx-1.2.2/sphinx/writers/latex.py	2014-04-16 18:28:23.962188970 +0400
-@@ -147,7 +147,7 @@
-         'utf8extra':       '\\DeclareUnicodeCharacter{00A0}{\\nobreakspace}',
+--- Sphinx-1.4.3/sphinx/writers/latex.py.babel	2016-06-11 21:39:20.661331363 +0200
++++ Sphinx-1.4.3/sphinx/writers/latex.py	2016-06-11 21:40:09.284106447 +0200
+@@ -308,7 +308,7 @@ class LaTeXTranslator(nodes.NodeVisitor)
          'cmappkg':         '\\usepackage{cmap}',
          'fontenc':         '\\usepackage[T1]{fontenc}',
+         'amsmath':         '\\usepackage{amsmath,amssymb,amstext}',
 -        'babel':           '\\usepackage{babel}',
 +        'babel':           '\\usepackage[english]{babel}',
          'fontpkg':         '\\usepackage{times}',
