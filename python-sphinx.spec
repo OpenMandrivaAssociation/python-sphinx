@@ -9,7 +9,7 @@ Summary:	Python documentation generator
 
 Name:		python-sphinx
 Version:	1.4.3
-Release:	0.1
+Release:	1
 Source0:	https://pypi.python.org/packages/f3/79/c0da1a0a8d4752b937afba5d8788ef684544a8a72ee2a8d47541a6cf7b65/Sphinx-%{version}.tar.gz
 Patch0:	        Sphinx-1.2.2-mantarget.patch
 Patch1:         Sphinx-1.2.2-babel-option.patch
