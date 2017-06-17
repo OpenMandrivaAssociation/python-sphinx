@@ -1,4 +1,4 @@
-%define tarname	Sphinx
+%define tarname	sphinx
 
 # disable these for bootstrapping nose and sphinx
 %bcond_with tests
@@ -8,15 +8,15 @@
 Summary:	Python documentation generator
 
 Name:		python-sphinx
-Version:	1.4.3
-Release:	2
-Source0:	https://pypi.python.org/packages/f3/79/c0da1a0a8d4752b937afba5d8788ef684544a8a72ee2a8d47541a6cf7b65/Sphinx-%{version}.tar.gz
+Version:	1.6.2
+Release:	1
+Source0:	https://github.com/sphinx-doc/sphinx/archive/%{version}.tar.gz
+Source1000:	%{name}.rpmlintrc
 Patch0:	        Sphinx-1.2.2-mantarget.patch
 Patch1:         Sphinx-1.2.2-babel-option.patch
-Patch2:		Sphinx-1.2.2-python3.patch
 License:	BSD
 Group:		Development/Python
-Url:		http://sphinx.pocoo.org/
+Url:		http://sphinx-doc.org/
 BuildArch:	noarch
 Requires:	python-pkg-resources
 Requires:	python-docutils
@@ -87,9 +87,8 @@ This package contains documentation in reST and HTML formats.
 %prep
 %setup -qc
 tar xzf %{SOURCE0}
+%apply_patches
 cd %{tarname}-%{version}
-%patch0 -p1 -b .mantarget
-%patch1 -p1 -b .babel
 sed '1d' -i sphinx/pycode/pgen2/token.py
 cd ..
 
@@ -98,11 +97,6 @@ mv %{tarname}-%{version} python3
 %if %{with python2}
 cp -r python3 python2
 %endif
-
-cd python3
-# Modifications needed only for python 3.x build
-#find . -name "*.py" |xargs 2to3 -w
-#patch2 -p1 -b .py3~
 
 %build
 %if %{with python2}

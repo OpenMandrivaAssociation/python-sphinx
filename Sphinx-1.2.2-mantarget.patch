@@ -1,8 +1,8 @@
---- sphinx/doc/Makefile.mantarget	2014-02-13 23:28:58.604797750 +0700
-+++ sphinx/doc/Makefile	2014-02-14 00:00:45.794658764 +0700
-@@ -12,6 +12,12 @@
- help:
- 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+--- python-sphinx-1.6.2/sphinx-1.6.2/doc/Makefile.mantarget	2017-06-17 17:53:58.205853774 +0200
++++ python-sphinx-1.6.2/sphinx-1.6.2/doc/Makefile	2017-06-17 17:54:40.938853495 +0200
+@@ -14,6 +14,12 @@ help:
+ 
+ .PHONY: help Makefile
  
 +# Likewise for man, since a man directory exist and make will assume
 +# the target is up to date
@@ -12,4 +12,4 @@
 +
  # Catch-all target: route all unknown targets to Sphinx using the new
  # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
- %:
+ %: Makefile

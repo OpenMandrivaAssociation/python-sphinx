@@ -1,11 +1,11 @@
---- Sphinx-1.4.3/sphinx/writers/latex.py.babel	2016-06-11 21:39:20.661331363 +0200
-+++ Sphinx-1.4.3/sphinx/writers/latex.py	2016-06-11 21:40:09.284106447 +0200
-@@ -308,7 +308,7 @@ class LaTeXTranslator(nodes.NodeVisitor)
-         'cmappkg':         '\\usepackage{cmap}',
-         'fontenc':         '\\usepackage[T1]{fontenc}',
-         'amsmath':         '\\usepackage{amsmath,amssymb,amstext}',
--        'babel':           '\\usepackage{babel}',
-+        'babel':           '\\usepackage[english]{babel}',
-         'fontpkg':         '\\usepackage{times}',
-         'fncychap':        '\\usepackage[Bjarne]{fncychap}',
-         'longtable':       '\\usepackage{longtable}',
+--- python-sphinx-1.6.2/sphinx-1.6.2/sphinx/writers/latex.py.babel	2017-06-17 17:55:29.769710524 +0200
++++ python-sphinx-1.6.2/sphinx-1.6.2/sphinx/writers/latex.py	2017-06-17 17:55:52.202185468 +0200
+@@ -67,7 +67,7 @@ DEFAULT_SETTINGS = {
+     'fontenc':         '\\usepackage[T1]{fontenc}',
+     'amsmath':         '\\usepackage{amsmath,amssymb,amstext}',
+     'multilingual':    '',
+-    'babel':           '\\usepackage{babel}',
++    'babel':           '\\usepackage[english]{babel}',
+     'polyglossia':     '',
+     'fontpkg':         '\\usepackage{times}',
+     'fncychap':        '\\usepackage[Bjarne]{fncychap}',
