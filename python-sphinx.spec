@@ -5,13 +5,13 @@
 %bcond_with doc
 %bcond_without python2
 
-%define __noautoreq pythonegg(typing)
+%define __noautoreq 'pythonegg\\(typing\\)'
 
 Summary:	Python documentation generator
 Name:		python-sphinx
-Version:	1.6.2
-Release:	3
-Source0:	https://github.com/sphinx-doc/sphinx/archive/%{version}.tar.gz
+Version:	1.6.4
+Release:	1
+Source0:	https://github.com/sphinx-doc/sphinx/archive/%{tarname}-%{version}.tar.gz
 Source1000:	%{name}.rpmlintrc
 Patch0:	        Sphinx-1.2.2-mantarget.patch
 Patch1:         Sphinx-1.2.2-babel-option.patch
@@ -72,7 +72,7 @@ Summary:	Documentation for %{name}
 
 Group:		Development/Python
 License:	BSD
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name} = %{EVRD}
 
 %description doc
 Sphinx is a tool that makes it easy to create intelligent and
