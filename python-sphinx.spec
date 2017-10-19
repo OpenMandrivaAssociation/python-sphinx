@@ -5,6 +5,8 @@
 %bcond_with doc
 %bcond_without python2
 
+%define __noautoreq pythonegg(typing)
+
 Summary:	Python documentation generator
 Name:		python-sphinx
 Version:	1.6.2
