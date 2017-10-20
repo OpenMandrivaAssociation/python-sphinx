@@ -13,7 +13,7 @@ Version:	1.6.4
 Release:	1
 Source0:	https://github.com/sphinx-doc/sphinx/archive/%{tarname}-%{version}.tar.gz
 Source1000:	%{name}.rpmlintrc
-Patch0:	        Sphinx-1.2.2-mantarget.patch
+#Patch0:	        Sphinx-1.2.2-mantarget.patch
 Patch1:         Sphinx-1.2.2-babel-option.patch
 License:	BSD
 Group:		Development/Python
