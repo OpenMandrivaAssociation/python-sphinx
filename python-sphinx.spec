@@ -9,9 +9,9 @@
 
 Summary:	Python documentation generator
 Name:		python-sphinx
-Version:	1.7.0~b2
+Version:	1.7.0
 Release:	1
-Source0:	https://github.com/sphinx-doc/sphinx/archive/%{upstreamver}.tar.gz
+Source0:	https://github.com/sphinx-doc/sphinx/archive/v%{upstreamver}.tar.gz
 Source1000:	%{name}.rpmlintrc
 #Patch0:	Sphinx-1.2.2-mantarget.patch
 #Patch1:        Sphinx-1.2.2-babel-option.patch
