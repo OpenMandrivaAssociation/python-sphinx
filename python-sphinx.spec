@@ -10,7 +10,7 @@
 Summary:	Python documentation generator
 Name:		python-sphinx
 Version:	1.7.1
-Release:	1
+Release:	2
 Source0:	https://github.com/sphinx-doc/sphinx/archive/v%{upstreamver}.tar.gz
 Source1000:	%{name}.rpmlintrc
 #Patch0:	Sphinx-1.2.2-mantarget.patch
@@ -23,6 +23,7 @@ Requires:	python-pkg-resources
 Requires:	python-docutils
 Requires:	python-jinja2
 Requires:	python-pygments
+Requires:	python-sphinxcontrib-websupport
 BuildRequires:	python-setuptools
 %if %{with doc}
 BuildRequires:	python-docutils >= 0.7
