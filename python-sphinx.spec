@@ -90,7 +90,7 @@ This package contains documentation in reST and HTML formats.
 
 %prep
 %setup -qn %{tarname}-%{upstreamver}
-%apply_patches
+%autopatch -p1
 
 %build
 python setup.py build
