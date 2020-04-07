@@ -9,7 +9,7 @@
 
 Summary:	Python documentation generator
 Name:		python-sphinx
-Version:	2.4.4
+Version:	3.0.0
 Release:	1
 Source0:	https://github.com/sphinx-doc/sphinx/archive/v%{upstreamver}.tar.gz
 Source1000:	%{name}.rpmlintrc
