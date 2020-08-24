@@ -9,7 +9,7 @@
 
 Summary:	Python documentation generator
 Name:		python-sphinx
-Version:	3.2.0
+Version:	3.2.1
 Release:	1
 Source0:	https://github.com/sphinx-doc/sphinx/archive/v%{upstreamver}.tar.gz
 Source1000:	%{name}.rpmlintrc
@@ -36,7 +36,7 @@ BuildRequires:	python-pygments
 BuildRequires:  python-jinja2
 %endif
 BuildRequires:	pkgconfig(python3)
-BuildRequires:	python3-distribute
+BuildRequires:	python-setuptools
 Obsoletes:	python2-sphinx < %{EVRD}
 %rename python3-sphinx
 
