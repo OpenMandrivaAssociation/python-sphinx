@@ -9,8 +9,8 @@
 
 Summary:	Python documentation generator
 Name:		python-sphinx
-Version:	3.2.1
-Release:	2
+Version:	3.3.1
+Release:	1
 Source0:	https://github.com/sphinx-doc/sphinx/archive/v%{upstreamver}.tar.gz
 Source1000:	%{name}.rpmlintrc
 #Patch0:	Sphinx-1.2.2-mantarget.patch
