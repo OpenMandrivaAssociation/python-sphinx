@@ -1,4 +1,4 @@
-%define tarname	sphinx
+%define tarname sphinx
 
 # disable these for bootstrapping nose and sphinx
 %bcond_with tests
@@ -9,7 +9,7 @@
 
 Summary:	Python documentation generator
 Name:		python-sphinx
-Version:	4.0.2
+Version:	4.2.0
 Release:	1
 Source0:	https://github.com/sphinx-doc/sphinx/archive/v%{upstreamver}/%{tarname}-%{version}.tar.gz
 Source1000:	%{name}.rpmlintrc
@@ -47,32 +47,9 @@ was originally created to format the new documentation for Python, but
 has since been cleaned up in the hope that it will be useful in many
 other projects.
 
-%if %{with python2}
-%package -n python2-sphinx
-Summary:	Python documentation generator for Python 2.x
-Group:		Development/Python
-Requires:	python2-docutils >= 0.7
-Requires:	python2-pygments >= 1.2
-Requires:	python2-jinja2 >= 2.3
-BuildRequires:	pkgconfig(python2)
-BuildRequires:	python2-nose
-BuildRequires:	python2-pygments
-BuildRequires:  python2-jinja2
-BuildRequires:	python2-setuptools
-
-%description -n python2-sphinx
-Sphinx is a tool that makes it easy to create intelligent and
-beautiful documentation for Python projects (or other documents
-consisting of multiple reStructuredText sources), written by Georg
-Brandl. It was originally created to translate the new Python
-documentation, but has now been cleaned up in the hope that it will be
-useful to many other projects.
-%endif
-
 %if %{with doc}
 %package doc
 Summary:	Documentation for %{name}
-
 Group:		Development/Python
 License:	BSD
 Requires:	%{name} = %{EVRD}
@@ -89,8 +66,7 @@ This package contains documentation in reST and HTML formats.
 %endif
 
 %prep
-%setup -qn %{tarname}-%{upstreamver}
-%autopatch -p1
+%autosetup -n %{tarname}-%{upstreamver} -p1
 
 %build
 python setup.py build
@@ -142,7 +118,6 @@ popd
   's:\(.*/locale/\)\([^/_]\+\)\(.*\.js$\):%lang(\2) \1\2\3:' \
   >> sphinx.lang
 
-
 %check
 %if %{with tests}
 make test
@@ -156,7 +131,7 @@ make test
 %dir %{_datadir}/sphinx/locale
 %dir %{_datadir}/sphinx/locale/*
 %if %{with doc}
-%{_mandir}/man1/*
+%doc %{_mandir}/man1/*
 %endif
 
 %if %{with doc}
