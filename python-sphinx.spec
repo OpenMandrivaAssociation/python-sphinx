@@ -10,7 +10,7 @@
 Summary:	Python documentation generator
 Name:		python-sphinx
 Version:	4.2.0
-Release:	1
+Release:	2
 Source0:	https://github.com/sphinx-doc/sphinx/archive/v%{upstreamver}/%{tarname}-%{version}.tar.gz
 Source1000:	%{name}.rpmlintrc
 #Patch0:	Sphinx-1.2.2-mantarget.patch
@@ -35,7 +35,7 @@ BuildRequires:	python-nose
 BuildRequires:	python-pygments
 BuildRequires:  python-jinja2
 %endif
-BuildRequires:	pkgconfig(python3)
+BuildRequires:	pkgconfig(python)
 BuildRequires:	python-setuptools
 Obsoletes:	python2-sphinx < %{EVRD}
 %rename python3-sphinx
