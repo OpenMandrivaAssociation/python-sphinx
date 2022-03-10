@@ -1,0 +1,174 @@
+From b27b00df139a08c0705460322d89ab1475b49bcf Mon Sep 17 00:00:00 2001
+From: Adam Turner <9087854+AA-Turner@users.noreply.github.com>
+Date: Sat, 5 Feb 2022 14:57:09 +0000
+Subject: [PATCH 1/2] Bump Docutils dependency
+
+---
+ .github/workflows/main.yml  | 11 +++++------
+ CHANGES                     |  1 +
+ doc/usage/configuration.rst |  2 +-
+ setup.py                    |  2 +-
+ tox.ini                     |  7 +++----
+ 5 files changed, 11 insertions(+), 12 deletions(-)
+
+diff --git a/.github/workflows/main.yml b/.github/workflows/main.yml
+index c831277039..0496bc7748 100644
+--- a/.github/workflows/main.yml
++++ b/.github/workflows/main.yml
+@@ -8,24 +8,23 @@ jobs:
+     strategy:
+       fail-fast: false
+       matrix:
+-        name: [py36, py37, py38, py39, py310]
+         include:
+         - name: py36
+           python: 3.6
+-          docutils: du14
++          docutils: du16
+         - name: py37
+           python: 3.7
+-          docutils: du15
++          docutils: du16
+         - name: py38
+           python: 3.8
+-          docutils: du16
++          docutils: du17
+         - name: py39
+           python: 3.9
+-          docutils: du17
++          docutils: du18
+           coverage: "--cov ./ --cov-append --cov-config setup.cfg"
+         - name: py310
+           python: "3.10"
+-          docutils: du17
++          docutils: du18
+         - name: py311-dev
+           python: 3.11-dev
+           docutils: py311
+diff --git a/doc/usage/configuration.rst b/doc/usage/configuration.rst
+index 737e228233..7697025feb 100644
+--- a/doc/usage/configuration.rst
++++ b/doc/usage/configuration.rst
+@@ -546,7 +546,7 @@ General configuration
+          make latex O="-D smartquotes_action="
+ 
+       This can follow some ``make html`` with no problem, in contrast to the
+-      situation from the prior note.  It requires Docutils 0.14 or later.
++      situation from the prior note.
+ 
+    .. versionadded:: 1.6.6
+ 
+diff --git a/setup.py b/setup.py
+index ccadd59f4d..1b7330e2e4 100644
+--- a/setup.py
++++ b/setup.py
+@@ -22,7 +22,7 @@
+     'sphinxcontrib-qthelp',
+     'Jinja2>=2.3',
+     'Pygments>=2.0',
+-    'docutils>=0.14,<0.18',
++    'docutils>=0.16,<0.19',
+     'snowballstemmer>=1.1',
+     'babel>=1.3',
+     'alabaster>=0.7,<0.8',
+diff --git a/tox.ini b/tox.ini
+index f0afd779b6..cc851d13b0 100644
+--- a/tox.ini
++++ b/tox.ini
+@@ -1,6 +1,6 @@
+ [tox]
+ minversion = 2.4.0
+-envlist = docs,flake8,mypy,twine,coverage,py{36,37,38,39,310},du{14,15,16,17}
++envlist = docs,flake8,mypy,twine,coverage,py{36,37,38,39,310},du{16,17,18}
+ 
+ [testenv]
+ usedevelop = True
+@@ -16,12 +16,11 @@ passenv =
+     TERM
+ description =
+     py{36,37,38,39,310}: Run unit tests against {envname}.
+-    du{12,13,14}: Run unit tests with the given version of docutils.
++    du{16,17,18}: Run unit tests with the given version of docutils.
+ deps =
+-    du14: docutils==0.14.*
+-    du15: docutils==0.15.*
+     du16: docutils==0.16.*
+     du17: docutils==0.17.*
++    du18: docutils==0.18.*
+ extras =
+     test
+ setenv =
+
+From 0ad44757dc11bddf74b32197cdf8eea5a3fd60d3 Mon Sep 17 00:00:00 2001
+From: Adam Turner <9087854+AA-Turner@users.noreply.github.com>
+Date: Sat, 5 Feb 2022 18:09:50 +0000
+Subject: [PATCH 2/2] Revert increasing minimum Docutils version
+
+---
+ .github/workflows/main.yml | 8 ++++----
+ setup.py                   | 2 +-
+ tox.ini                    | 6 ++++--
+ 3 files changed, 9 insertions(+), 7 deletions(-)
+
+diff --git a/.github/workflows/main.yml b/.github/workflows/main.yml
+index 0496bc7748..bd2d64964b 100644
+--- a/.github/workflows/main.yml
++++ b/.github/workflows/main.yml
+@@ -11,16 +11,16 @@ jobs:
+         include:
+         - name: py36
+           python: 3.6
+-          docutils: du16
++          docutils: du14
+         - name: py37
+           python: 3.7
+-          docutils: du16
++          docutils: du15
+         - name: py38
+           python: 3.8
+-          docutils: du17
++          docutils: du16
+         - name: py39
+           python: 3.9
+-          docutils: du18
++          docutils: du17
+           coverage: "--cov ./ --cov-append --cov-config setup.cfg"
+         - name: py310
+           python: "3.10"
+diff --git a/setup.py b/setup.py
+index 1b7330e2e4..8280b0c4ed 100644
+--- a/setup.py
++++ b/setup.py
+@@ -22,7 +22,7 @@
+     'sphinxcontrib-qthelp',
+     'Jinja2>=2.3',
+     'Pygments>=2.0',
+-    'docutils>=0.16,<0.19',
++    'docutils>=0.14,<0.19',
+     'snowballstemmer>=1.1',
+     'babel>=1.3',
+     'alabaster>=0.7,<0.8',
+diff --git a/tox.ini b/tox.ini
+index cc851d13b0..486c9badc8 100644
+--- a/tox.ini
++++ b/tox.ini
+@@ -1,6 +1,6 @@
+ [tox]
+ minversion = 2.4.0
+-envlist = docs,flake8,mypy,twine,coverage,py{36,37,38,39,310},du{16,17,18}
++envlist = docs,flake8,mypy,twine,coverage,py{36,37,38,39,310},du{14,15,16,17,18}
+ 
+ [testenv]
+ usedevelop = True
+@@ -16,8 +16,10 @@ passenv =
+     TERM
+ description =
+     py{36,37,38,39,310}: Run unit tests against {envname}.
+-    du{16,17,18}: Run unit tests with the given version of docutils.
++    du{14,15,16,17,18}: Run unit tests with the given version of docutils.
+ deps =
++    du14: docutils==0.14.*
++    du15: docutils==0.15.*
+     du16: docutils==0.16.*
+     du17: docutils==0.17.*
+     du18: docutils==0.18.*

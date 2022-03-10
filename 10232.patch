@@ -1,0 +1,97 @@
+From 12104fe5de25e75562c5ba146b68c9d100e115f7 Mon Sep 17 00:00:00 2001
+From: Takeshi KOMIYA <i.tkomiya@gmail.com>
+Date: Thu, 3 Mar 2022 01:34:21 +0900
+Subject: [PATCH] test: Follow the new behavior of typing.get_type_hints()
+ since py311
+
+Since python-3.11, `typing.get_type_hints()` will not add Optional[t] to
+type annotations even if a default value for function argument is None.
+
+refs: https://github.com/python/cpython/pull/30304 (bpo-46195)
+---
+ tests/test_ext_autodoc_configs.py | 14 ++++++++++++--
+ tests/test_util_inspect.py        | 15 ++++++++++++---
+ 2 files changed, 24 insertions(+), 5 deletions(-)
+
+diff --git a/tests/test_ext_autodoc_configs.py b/tests/test_ext_autodoc_configs.py
+index e84e360e89..c5a1ab8f6a 100644
+--- a/tests/test_ext_autodoc_configs.py
++++ b/tests/test_ext_autodoc_configs.py
+@@ -599,6 +599,11 @@ def test_mocked_module_imports(app, warning):
+ @pytest.mark.sphinx('html', testroot='ext-autodoc',
+                     confoverrides={'autodoc_typehints': "signature"})
+ def test_autodoc_typehints_signature(app):
++    if sys.version_info < (3, 11):
++        type_o = "typing.Optional[typing.Any]"
++    else:
++        type_o = "typing.Any"
++
+     options = {"members": None,
+                "undoc-members": None}
+     actual = do_autodoc(app, 'module', 'target.typehints', options)
+@@ -612,7 +617,7 @@ def test_autodoc_typehints_signature(app):
+         '   :type: int',
+         '',
+         '',
+-        '.. py:class:: Math(s: str, o: typing.Optional[typing.Any] = None)',
++        '.. py:class:: Math(s: str, o: %s = None)' % type_o,
+         '   :module: target.typehints',
+         '',
+         '',
+@@ -1146,6 +1151,11 @@ def test_autodoc_typehints_description_and_type_aliases(app):
+ @pytest.mark.sphinx('html', testroot='ext-autodoc',
+                     confoverrides={'autodoc_typehints_format': "short"})
+ def test_autodoc_typehints_format_short(app):
++    if sys.version_info < (3, 11):
++        type_o = "~typing.Optional[~typing.Any]"
++    else:
++        type_o = "~typing.Any"
++
+     options = {"members": None,
+                "undoc-members": None}
+     actual = do_autodoc(app, 'module', 'target.typehints', options)
+@@ -1159,7 +1169,7 @@ def test_autodoc_typehints_format_short(app):
+         '   :type: int',
+         '',
+         '',
+-        '.. py:class:: Math(s: str, o: ~typing.Optional[~typing.Any] = None)',
++        '.. py:class:: Math(s: str, o: %s = None)' % type_o,
+         '   :module: target.typehints',
+         '',
+         '',
+diff --git a/tests/test_util_inspect.py b/tests/test_util_inspect.py
+index 9e570da76b..589d522f37 100644
+--- a/tests/test_util_inspect.py
++++ b/tests/test_util_inspect.py
+@@ -190,7 +190,10 @@ def test_signature_annotations():
+ 
+     # Space around '=' for defaults
+     sig = inspect.signature(f7)
+-    assert stringify_signature(sig) == '(x: typing.Optional[int] = None, y: dict = {}) -> None'
++    if sys.version_info < (3, 11):
++        assert stringify_signature(sig) == '(x: typing.Optional[int] = None, y: dict = {}) -> None'
++    else:
++        assert stringify_signature(sig) == '(x: int = None, y: dict = {}) -> None'
+ 
+     # Callable types
+     sig = inspect.signature(f8)
+@@ -261,11 +264,17 @@ def test_signature_annotations():
+ 
+     # show_return_annotation is False
+     sig = inspect.signature(f7)
+-    assert stringify_signature(sig, show_return_annotation=False) == '(x: typing.Optional[int] = None, y: dict = {})'
++    if sys.version_info < (3, 11):
++        assert stringify_signature(sig, show_return_annotation=False) == '(x: typing.Optional[int] = None, y: dict = {})'
++    else:
++        assert stringify_signature(sig, show_return_annotation=False) == '(x: int = None, y: dict = {})'
+ 
+     # unqualified_typehints is True
+     sig = inspect.signature(f7)
+-    assert stringify_signature(sig, unqualified_typehints=True) == '(x: ~typing.Optional[int] = None, y: dict = {}) -> None'
++    if sys.version_info < (3, 11):
++        assert stringify_signature(sig, unqualified_typehints=True) == '(x: ~typing.Optional[int] = None, y: dict = {}) -> None'
++    else:
++        assert stringify_signature(sig, unqualified_typehints=True) == '(x: int = None, y: dict = {}) -> None'
+ 
+ 
+ @pytest.mark.skipif(sys.version_info < (3, 8), reason='python 3.8+ is required.')
