@@ -9,14 +9,10 @@
 
 Summary:	Python documentation generator
 Name:		python-sphinx
-Version:	4.4.0
-Release:	2
+Version:	4.5.0
+Release:	1
 Source0:	https://github.com/sphinx-doc/sphinx/archive/v%{upstreamver}/%{tarname}-%{version}.tar.gz
 Source1000:	%{name}.rpmlintrc
-Patch0:		https://github.com/sphinx-doc/sphinx/pull/10094.patch
-Patch1:		https://patch-diff.githubusercontent.com/raw/sphinx-doc/sphinx/pull/10164.patch
-Patch2:		https://github.com/sphinx-doc/sphinx/pull/10232.patch
-Patch3:		https://github.com/sphinx-doc/sphinx/commit/5be4f47d85ecf7f1b9acdd64bb9f888d64816337.patch
 License:	BSD
 Group:		Development/Python
 Url:		http://sphinx-doc.org/
