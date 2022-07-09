@@ -9,10 +9,12 @@
 
 Summary:	Python documentation generator
 Name:		python-sphinx
-Version:	5.0.1
+Version:	5.0.2
 Release:	1
 Source0:	https://github.com/sphinx-doc/sphinx/archive/v%{upstreamver}/%{tarname}-%{version}.tar.gz
 Source1000:	%{name}.rpmlintrc
+### OMV patches ###
+Patch0:   python-sphinx-5.0.2-fix-build-for-new-docutils.patch
 License:	BSD
 Group:		Development/Python
 Url:		http://sphinx-doc.org/
