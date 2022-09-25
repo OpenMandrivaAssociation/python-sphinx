@@ -23,7 +23,8 @@ Requires:	python-jinja2
 Requires:	python-pygments
 Requires:	python-sphinxcontrib-websupport
 Requires:	python-imagesize
-BuildRequires:	python-setuptools
+BuildRequires:	python-pip
+BuildRequires:	python-wheel
 %if %{with doc}
 BuildRequires:	python-docutils >= 0.7
 BuildRequires:	python-jinja2 >= 2.3
