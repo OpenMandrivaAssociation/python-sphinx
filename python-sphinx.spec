@@ -9,7 +9,7 @@
 
 Summary:	Python documentation generator
 Name:		python-sphinx
-Version:	5.1.1
+Version:	5.2.0
 Release:	1
 Source0:	https://github.com/sphinx-doc/sphinx/archive/v%{upstreamver}/%{tarname}-%{version}.tar.gz
 Source1000:	%{name}.rpmlintrc
@@ -67,7 +67,7 @@ This package contains documentation in reST and HTML formats.
 %autosetup -n %{tarname}-%{upstreamver} -p1
 
 %build
-python setup.py build
+%py_build
 
 %if %{with doc}
 cd doc
@@ -77,7 +77,7 @@ mv _build/html ..
 %endif
 
 %install
-python setup.py install --skip-build --root=%{buildroot} 
+%py_install
 
 %if %{with doc}
 cd doc
