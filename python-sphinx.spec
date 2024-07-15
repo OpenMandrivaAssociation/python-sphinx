@@ -9,7 +9,7 @@
 
 Summary:	Python documentation generator
 Name:		python-sphinx
-Version:	7.2.6
+Version:	7.4.0
 Release:	1
 Source0:	https://github.com/sphinx-doc/sphinx/archive/v%{upstreamver}/%{tarname}-%{version}.tar.gz
 Source1000:	%{name}.rpmlintrc
@@ -123,7 +123,6 @@ make test
 %endif
 
 %files -f sphinx.lang
-%doc AUTHORS CHANGES EXAMPLES LICENSE
 %{_bindir}/sphinx-*
 %{py_puresitedir}/*
 %dir %{_datadir}/sphinx/
