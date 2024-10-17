@@ -15,7 +15,7 @@ Source0:	https://github.com/sphinx-doc/sphinx/archive/v%{upstreamver}/%{tarname}
 Source1000:	%{name}.rpmlintrc
 License:	BSD
 Group:		Development/Python
-Url:		http://sphinx-doc.org/
+Url:		https://sphinx-doc.org/
 BuildArch:	noarch
 Requires:	python-pkg-resources
 Requires:	python-docutils
