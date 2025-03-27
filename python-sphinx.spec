@@ -9,7 +9,7 @@
 
 Summary:	Python documentation generator
 Name:		python-sphinx
-Version:	8.1.3
+Version:	8.2.3
 Release:	1
 Source0:	https://github.com/sphinx-doc/sphinx/archive/v%{upstreamver}/%{tarname}-%{version}.tar.gz
 Source1000:	%{name}.rpmlintrc
@@ -38,6 +38,9 @@ BuildRequires:	pkgconfig(python)
 BuildRequires:	python-setuptools
 Obsoletes:	python2-sphinx < %{EVRD}
 %rename python3-sphinx
+
+%patchlist
+sphinx-8.2.3-compile.patch
 
 %description
 Sphinx is a tool that facilitates the creation of beautiful
