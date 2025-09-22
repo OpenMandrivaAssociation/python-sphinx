@@ -1,0 +1,103 @@
+From 6edeaaa64f7c3b472b9f6e862fa90c64eedfc2ed Mon Sep 17 00:00:00 2001
+From: Adam Turner <9087854+aa-turner@users.noreply.github.com>
+Date: Tue, 29 Jul 2025 18:30:54 +0100
+Subject: [PATCH 1/2] Support Docutils 0.22
+
+---
+ CHANGES.rst         | 4 ++++
+ doc/changes/7.3.rst | 2 +-
+ pyproject.toml      | 2 +-
+ 3 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/CHANGES.rst b/CHANGES.rst
+index 7f405121bc3..b58b6722b3a 100644
+--- a/CHANGES.rst
++++ b/CHANGES.rst
+@@ -4,6 +4,10 @@ Release 8.3.0 (in development)
+ Dependencies
+ ------------
+ 
++* #13786: Support `Docutils 0.22`_. Patch by Adam Turner.
++
++  .. _Docutils 0.22: https://docutils.sourceforge.io/RELEASE-NOTES.html#release-0-22-2026-07-29
++
+ Incompatible changes
+ --------------------
+ 
+diff --git a/doc/changes/7.3.rst b/doc/changes/7.3.rst
+index b544a722041..c9395c18c4a 100644
+--- a/doc/changes/7.3.rst
++++ b/doc/changes/7.3.rst
+@@ -86,7 +86,7 @@ Dependencies
+ 
+ * #11858: Increase the minimum supported version of Alabaster to 0.7.14.
+   Patch by Adam Turner.
+-* #11411: Support `Docutils 0.21`_. Patch by Adam Turner.
++* #12267: Support `Docutils 0.21`_. Patch by Adam Turner.
+ 
+   .. _Docutils 0.21: https://docutils.sourceforge.io/RELEASE-NOTES.html#release-0-21-2024-04-09
+ * #12012: Use ``types-docutils`` instead of ``docutils-stubs``.
+diff --git a/pyproject.toml b/pyproject.toml
+index 75ae0f71a9d..d915f293f3b 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -76,7 +76,7 @@ dependencies = [
+     "sphinxcontrib-serializinghtml>=1.1.9",
+     "Jinja2>=3.1",
+     "Pygments>=2.17",
+-    "docutils>=0.20,<0.22",
++    "docutils>=0.20,<0.23",
+     "snowballstemmer>=2.2",
+     "babel>=2.13",
+     "alabaster>=0.7.14",
+
+From d0e90dd64db81f62a59010f0a50879c0e9ae2a3a Mon Sep 17 00:00:00 2001
+From: Adam Turner <9087854+aa-turner@users.noreply.github.com>
+Date: Tue, 29 Jul 2025 18:35:37 +0100
+Subject: [PATCH 2/2] Satisfy mypy
+
+---
+ sphinx/transforms/__init__.py    | 2 +-
+ sphinx/transforms/references.py  | 2 +-
+ tests/test_markup/test_markup.py | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/sphinx/transforms/__init__.py b/sphinx/transforms/__init__.py
+index 760a5e6a67d..3728093f093 100644
+--- a/sphinx/transforms/__init__.py
++++ b/sphinx/transforms/__init__.py
+@@ -372,7 +372,7 @@ def apply(self, **kwargs: Any) -> None:
+         # override default settings with :confval:`smartquotes_action`
+         self.smartquotes_action = self.config.smartquotes_action
+ 
+-        super().apply()  # type: ignore[no-untyped-call]
++        super().apply()
+ 
+     def is_available(self) -> bool:
+         builders = self.config.smartquotes_excludes.get('builders', [])
+diff --git a/sphinx/transforms/references.py b/sphinx/transforms/references.py
+index 17380777997..8655dbfa5f3 100644
+--- a/sphinx/transforms/references.py
++++ b/sphinx/transforms/references.py
+@@ -25,7 +25,7 @@ def apply(self, **kwargs: Any) -> None:
+ 
+             # suppress INFO level messages for a while
+             reporter.report_level = max(reporter.WARNING_LEVEL, reporter.report_level)
+-            super().apply()  # type: ignore[no-untyped-call]
++            super().apply()
+         finally:
+             reporter.report_level = report_level
+ 
+diff --git a/tests/test_markup/test_markup.py b/tests/test_markup/test_markup.py
+index f9da6038c7f..fb4df4c400b 100644
+--- a/tests/test_markup/test_markup.py
++++ b/tests/test_markup/test_markup.py
+@@ -62,7 +62,7 @@ def parse_(rst):
+         document = new_document()
+         parser = RstParser()
+         parser.parse(rst, document)
+-        SphinxSmartQuotes(document, startnode=None).apply()  # type: ignore[no-untyped-call]
++        SphinxSmartQuotes(document, startnode=None).apply()
+         for msg in list(document.findall(nodes.system_message)):
+             if msg['level'] == 1:
+                 msg.replace_self([])
