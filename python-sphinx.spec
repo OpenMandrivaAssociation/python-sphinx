@@ -9,8 +9,8 @@
 
 Summary:	Python documentation generator
 Name:		python-sphinx
-Version:	8.2.3
-Release:	2
+Version:	9.0.4
+Release:	1
 Source0:	https://github.com/sphinx-doc/sphinx/archive/v%{upstreamver}/%{tarname}-%{version}.tar.gz
 Source1000:	%{name}.rpmlintrc
 License:	BSD
@@ -18,30 +18,26 @@ Group:		Development/Python
 Url:		https://sphinx-doc.org/
 BuildArch:	noarch
 Requires:	python-pkg-resources
-Requires:	python-docutils
-Requires:	python-jinja2
-Requires:	python-pygments
-Requires:	python-sphinxcontrib-websupport
-Requires:	python-imagesize
-BuildRequires:	python-pip
-BuildRequires:	python-wheel
+BuildRequires:	python%{pyver}dist(setuptools)
+Requires:	python%{pyver}dist(docutils)
+Requires:	python%{pyver}dist(jinja2)
+Requires:	python%{pyver}dist(pygments)
+Requires:	python%{pyver}dist(sphinxcontrib-websupport)
+Requires:	python%{pyver}dist(imagesize)
+BuildRequires:	python%{pyver}dist(pip)
+BuildRequires:	python%{pyver}dist(wheel)
 %if %{with doc}
-BuildRequires:	python-docutils >= 0.7
-BuildRequires:	python-jinja2 >= 2.3
+BuildRequires:	python%{pyver}dist(docutils) >= 0.7
+BuildRequires:	python%{pyver}dist(jinja2) >= 2.3
 %endif
 %if %{with tests}
 BuildRequires:	python-nose
-BuildRequires:	python-pygments
-BuildRequires:  python-jinja2
+BuildRequires:	python%{pyver}dist(pygments)
+BuildRequires:  python%{pyver}dist(jinja2)
 %endif
 BuildRequires:	pkgconfig(python)
-BuildRequires:	python-setuptools
 Obsoletes:	python2-sphinx < %{EVRD}
 %rename python3-sphinx
-
-%patchlist
-sphinx-8.2.3-compile.patch
-https://github.com/sphinx-doc/sphinx/pull/13786.patch
 
 %description
 Sphinx is a tool that facilitates the creation of beautiful
