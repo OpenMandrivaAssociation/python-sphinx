@@ -1,0 +1,15 @@
+diff -up sphinx-9.0.4/sphinx/ext/napoleon/__init__.py.omv~ sphinx-9.0.4/sphinx/ext/napoleon/__init__.py
+--- sphinx-9.0.4/sphinx/ext/napoleon/__init__.py.omv~	2025-12-15 02:51:18.818734736 +0100
++++ sphinx-9.0.4/sphinx/ext/napoleon/__init__.py	2025-12-15 02:55:04.359856136 +0100
+@@ -470,7 +470,10 @@ def _skip_member(
+         cls_is_owner = False
+         if what in {'class', 'exception'}:
+             qualname = getattr(obj, '__qualname__', '')
+-            cls_path, _, _ = qualname.rpartition('.')
++            try:
++                cls_path, _, _ = qualname.rpartition('.')
++            except Exception:
++                cls_path = qualname
+             if cls_path:
+                 try:
+                     if '.' in cls_path:
