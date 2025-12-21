@@ -18,6 +18,7 @@ Group:		Development/Python
 Url:		https://sphinx-doc.org/
 BuildArch:	noarch
 Requires:	python-pkg-resources
+BuildRequires:	make
 BuildRequires:	python%{pyver}dist(setuptools)
 Requires:	python%{pyver}dist(docutils)
 Requires:	python%{pyver}dist(jinja2)
