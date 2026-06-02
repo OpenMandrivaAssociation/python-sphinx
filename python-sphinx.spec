@@ -9,8 +9,8 @@
 
 Summary:	Python documentation generator
 Name:		python-sphinx
-Version:	9.0.4
-Release:	2
+Version:	9.1.0
+Release:	1
 Source0:	https://github.com/sphinx-doc/sphinx/archive/v%{upstreamver}/%{tarname}-%{version}.tar.gz
 Source1000:	%{name}.rpmlintrc
 License:	BSD
@@ -41,7 +41,7 @@ Obsoletes:	python2-sphinx < %{EVRD}
 %rename python3-sphinx
 
 %patchlist
-sphinx-9.0.4-fix-crash-generating-scons-docs.patch
+#sphinx-9.0.4-fix-crash-generating-scons-docs.patch
 
 %description
 Sphinx is a tool that facilitates the creation of beautiful
