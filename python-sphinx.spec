@@ -10,8 +10,8 @@
 
 Name:		python-sphinx
 Summary:	Python documentation generator
-Version:	9.1.0
-Release:	2
+Version:	9.1.1
+Release:	1
 License:	BSD-2-Clause
 Group:		Development/Python
 URL:		https://sphinx-doc.org/
